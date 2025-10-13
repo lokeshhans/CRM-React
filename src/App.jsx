@@ -1,8 +1,10 @@
 import "./App.css";
+import Home from "./pages/Home/Home";
+import MainRoutes from "./routes/MainRoutes/MainRoutes";
 function App() {
   return (
     <>
-      <h1 className="text-3xl  font-bold underline">Hello world!</h1>
+    <MainRoutes />
     </>
   );
 }
