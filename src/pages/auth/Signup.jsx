@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -34,7 +35,6 @@ function Signup() {
     });
     const dropdown = document.getElementById("userTypeDrodown");
     dropdown.open = !dropdown.open;
-    console.log(userTypeSelected);
   }
   function resetSignupState() {
     setSignupDetails({
@@ -53,15 +53,23 @@ function Signup() {
       !signupDetails.password ||
       !signupDetails.clientName ||
       !signupDetails.userStatus ||
-      !signupDetails.userType 
+      !signupDetails.userType
     )
       return;
     console.log("calling login", signupDetails);
-    const response = await dispatch(signup(signupDetails));
+    const response =  await dispatch(signup(signupDetails));
     console.log(response);
+    const signupSucessful = () => {
+      // toast('signup sucessfull');
+    }; 
+    if (response.payload){  navigate("/login");
+      signupSucessful();
+    }
     
-    if (response.payload) navigate("/login");
-    else resetSignupState();
+    else {
+      resetSignupState();
+      // toast.error('Something Went wrong! Please try Again...');
+    }
   }
 
   return (
@@ -103,7 +111,7 @@ function Signup() {
           />
           <details className="dropdown pb-8" id="userTypeDrodown">
             <summary className="btn text-blue-50 flex w-full ">
-              {(!signupDetails.userType)? "User Type" : signupDetails.userType}
+              {!signupDetails.userType ? "User Type" : signupDetails.userType}
             </summary>
             <ul
               onClick={handleUserType}
@@ -128,7 +136,9 @@ function Signup() {
             Signup
           </button>
         </form>
-        <p>already have an account login ? <Link to={"/login"}>login</Link></p>
+        <p>
+          already have an account login ? <Link to={"/login"}>login</Link>
+        </p>
       </div>
     </div>
   );
