@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { login } from "../../Redux/Slices/AuthSlice";
 
@@ -61,6 +61,8 @@ function Login() {
             Login
           </button>
         </div>
+        <p>haven't an account signup ? <Link to={"/signup"}>signup</Link></p>
+
       </div>
     </div>
   );
