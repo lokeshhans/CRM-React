@@ -9,7 +9,7 @@ function MainRoutes() {
     <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/sigup' element={<Signup />} />
+        <Route path='/signup' element={<Signup />} />
     </Routes>
   );
 }
