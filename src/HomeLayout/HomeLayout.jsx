@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,6 +14,11 @@ const HomeLayout = ({ children }) => {
     dispatch(logout());
     navigate('/login');
   }
+  useEffect(() => {
+    if(!authState.isLoggedIn ) navigate('/login');
+  }, []);
+  
+
   return (
     <div>
       <div className=" ">
