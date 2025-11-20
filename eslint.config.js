@@ -29,7 +29,8 @@ export default defineConfig([
       "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
       "simple-import-sort/imports": "error",
       'simple-import-sort/exports': 'error',
-      "semi": [1, "always"]
+      "semi": [1, "always"],
+       "react/prop-types": "off"
     },
   },
 ]);
