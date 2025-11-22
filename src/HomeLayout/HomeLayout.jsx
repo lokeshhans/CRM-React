@@ -15,7 +15,7 @@ const HomeLayout = ({ children }) => {
     navigate('/login');
   }
   useEffect(() => {
-    // if(!authState.isLoggedIn ) navigate('/login');
+    if(!authState.isLoggedIn ) navigate('/login');
   }, []);
   
 

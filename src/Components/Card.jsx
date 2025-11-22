@@ -15,6 +15,7 @@ const Card = ({ children, fontColor="text-white", borderColor="border-error", di
                 </div>
                 <div className={`radial-progress ${fontColor}`} style={{"--value": status}}>{status}%</div>
             </div>
+            
 
         </div>
   );
