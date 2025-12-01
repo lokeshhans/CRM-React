@@ -1,9 +1,15 @@
 
+import { FaDownload } from "react-icons/fa";  
+import { usePDF } from "react-to-pdf";
+
 import HomeLayout from "../HomeLayout/HomeLayout";
 import useTickets from "../hooks/useTickets";
 
+
 const Dashboard = () => {
   const [ticketState] = useTickets();
+     const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
+
 
   return (
     <div>
@@ -11,12 +17,12 @@ const Dashboard = () => {
         <div className="min-h-[90vh]  flex flex-col items-center justify-center gap-2">
 
                 <div className="bg-yellow-500 w-full text-black text-center text-3xl py-4 font-bold hover:bg-yellow-400 transition-all ease-in-out duration-300">
-                    Tickets Records
+                    Tickets Records <FaDownload  onClick={()=> toPDF()} className="inline cursor-pointer"/>
                 </div>
 
                 {/* Table */}
 
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col w-full" ref={targetRef}>
 
                     {/* Title row */}
                     <div className="flex text-white font-bold justify-between items-center gap-3 bg-purple-600 px-2 py-2 grid-cols-7">
