@@ -1,0 +1,3 @@
+    .table-title {
+      @apply text-lg flex flex-wrap justify-center items-center;
+    }

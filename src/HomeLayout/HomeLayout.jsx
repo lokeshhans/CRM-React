@@ -42,10 +42,10 @@ const HomeLayout = ({ children }) => {
             <ul className="menu bg-base-200 min-h-full w-80 p-4">
               {/* Sidebar content here */}
               <li>
-                <a>View all Tickets</a>
+                <Link to='/'>Home</Link>
               </li>
               <li>
-                <a>Dashboard</a>
+                <Link to='/dashboard'>Dashboard</Link>
               </li>
               <li className="absolute bottom-4 w-2/3 ">
                 <div className="w-full flex items-center justify-center gap-10">

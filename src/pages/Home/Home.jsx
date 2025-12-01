@@ -1,25 +1,14 @@
-import { useEffect } from "react";
 import { FaHandHolding } from "react-icons/fa";
 import { GiProgression } from "react-icons/gi";
 import { IoLockOpenSharp } from "react-icons/io5";
 import { LiaResolving } from "react-icons/lia";
 import { TiCancel } from "react-icons/ti";
-import { useDispatch, useSelector } from "react-redux";
 
 import Card from "../../Components/Card";
 import HomeLayout from "../../HomeLayout/HomeLayout";
-import { getAllTicketsForTheUser } from "../../Redux/Slices/TicketSlice";
+import useTickets from "../../hooks/useTickets";
 function Home() {
-  const authState = useSelector((state) => state.auth);
-  const ticketsState = useSelector((state) => state.ticket);
-  const dispatch = useDispatch();
-  async function loadTickets() {
-    const response = await dispatch(getAllTicketsForTheUser());
-    console.log(response);
-  }
-  useEffect(() => {
-    loadTickets();
-  }, [authState.token]);
+  const [ticketsState] = useTickets();
 
   return (
     <HomeLayout>
