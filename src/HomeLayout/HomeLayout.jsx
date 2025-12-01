@@ -84,7 +84,7 @@ const HomeLayout = ({ children }) => {
       </div>
 
       <div className="flex items-center justify-center  ">
-        <div className=" w-3/4 ">{children}</div>
+        <div className=" w-full ">{children}</div>
       </div>
     </div>
   );

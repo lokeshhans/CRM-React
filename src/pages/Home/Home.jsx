@@ -12,7 +12,7 @@ function Home() {
 
   return (
     <HomeLayout>
-      <div className="flex flex-wrap gap-10 items-center justify-center ">
+      <div className="flex flex-wrap gap-10 items-center justify-center  ">
         <Card
           titleText="Open"
           status={
