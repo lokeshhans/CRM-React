@@ -1,23 +1,41 @@
+import { useNavigate } from "react-router-dom";
+const Card = ({
+  children,
+  fontColor = "text-white",
+  borderColor = "border-error",
+  dividerColor = "bg-gray-100",
+  background = "bg-primary",
+  titleText,
+  status = 50,
+  quantity = 50,
+}) => {
+  const navigate = useNavigate();
 
-const Card = ({ children, fontColor="text-white", borderColor="border-error", dividerColor="bg-gray-100", background="bg-primary", titleText , status = 50, quantity = 50 }) => {
+  function onCardClick() {
+    navigate(`/dashboard?status=${titleText}`);
+  }
+
   return (
-    <div className={`hover:scale-105 transition-all ease-out duration-300 border-b-8 ${borderColor} w-64 h-44 ${background} rounded-md flex flex-col justify-center items-center py-2`}>
-            
-            <div className='text-primary-content text-2xl mb-2'>
-                {children} <span>{titleText}</span>
-            </div>
+    <div
+      onClick={onCardClick}
+      className={`hover:scale-105 hover:cursor-pointer transition-all ease-out duration-300 border-b-8 ${borderColor} w-64 h-44 ${background} rounded-md flex flex-col justify-center items-center py-2`}
+    >
+      <div className="text-primary-content text-2xl mb-2">
+        {children} <span>{titleText}</span>
+      </div>
 
-            <div className={`divider ${dividerColor} h-0.5 mx-4 rounded-sm`}></div> 
-            
-            <div className='flex justify-around gap-4 items-center mt-2'>
-                <div className={`text-7xl ${fontColor}`}>
-                    {quantity}
-                </div>
-                <div className={`radial-progress ${fontColor}`} style={{"--value": status}}>{status*100}%</div>
-            </div>
-            
+      <div className={`divider ${dividerColor} h-0.5 mx-4 rounded-sm`}></div>
 
+      <div className="flex justify-around gap-4 items-center mt-2">
+        <div className={`text-7xl ${fontColor}`}>{quantity}</div>
+        <div
+          className={`radial-progress ${fontColor}`}
+          style={{ "--value": status }}
+        >
+          {status * 100}%
         </div>
+      </div>
+    </div>
   );
 };
 
