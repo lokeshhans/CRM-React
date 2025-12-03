@@ -1,3 +1,4 @@
+import { Bar, Line, Pie } from "react-chartjs-2";
 import { FaHandHolding } from "react-icons/fa";
 import { GiProgression } from "react-icons/gi";
 import { IoLockOpenSharp } from "react-icons/io5";
@@ -6,10 +7,12 @@ import { TiCancel } from "react-icons/ti";
 
 import Card from "../../Components/Card";
 import HomeLayout from "../../HomeLayout/HomeLayout";
+import useCharts from "../../hooks/useCharts.js";
 import useTickets from "../../hooks/useTickets";
+
 function Home() {
   const [ticketsState] = useTickets();
-
+  const [pieChartData, lineChartData, barChartData] = useCharts();
   return (
     <HomeLayout>
       <div className="flex flex-wrap gap-10 items-center justify-center  ">
@@ -84,6 +87,24 @@ function Home() {
         >
           <TiCancel className="inline mr-2" />
         </Card>
+      </div>
+
+      <div className="mt-10 flex justify-center items-center gap-10">
+        <div className="w-80 h-80 ">
+          <Pie data={pieChartData} />
+        </div>
+      </div>
+
+      <div className="mt-10 flex justify-center items-center gap-10">
+        <div className="w-[40rem] h-[40rem]">
+          <Line data={lineChartData} />
+        </div>
+      </div>
+
+      <div className="mt-10 mb-10 flex justify-center items-center gap-10">
+        <div className="w-[50rem] bg-[wheat]">
+          <Bar data={barChartData} />
+        </div>
       </div>
     </HomeLayout>
   );
